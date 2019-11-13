@@ -1,25 +1,142 @@
 <app-header></app-header>
-<br/>
 <div class="main_body">
-  <div nz-row>
-    <div nz-col nzSpan="2"></div>
-    <div nz-col nzSpan="20">
+  <div nz-row class="body_row">
+    <div nz-col nzSpan="3"></div>
+    <div nz-col nzSpan="18">
       <div nz-row>
         <div nz-col nzSpan="12">
-          <label style="font-size: 20px;color: #ffffff;margin-left: 10px">
-            平台监控
-          </label>
-          <label style="color: #95A0B1;font-size: 12px">
-            监控服务器运行状态
-          </label>
+            <label style="font-size: 20px;color: #6FB4CE;margin-left: 10px;">
+              <i nz-icon nzType="dashboard" nzTheme="fill"></i> 平台监控
+            </label><br/>
+            <label style="color: #ccc;font-size: 12px;margin-left: 10px">
+              服务器运行状态
+            </label>
         </div>
-        <div nz-col nzSpan="12">
-            <nz-card *ngFor="let item of servers">
-
-            </nz-card>
+        <div nz-col nzSpan="12" style="float: right">
+            <ul class="node-list" *ngFor="let item of servers" >
+              <li *ngIf="item.selected" class="li_select">
+                <a style="font-size: 12px">
+                  <img style="width: 30px;height: 30px;margin-top: 6px" src="../../assets/icon/server.svg" />
+                  {{item.server}}
+                </a>
+              </li>
+              <li *ngIf="!item.selected" >
+                <a style="font-size: 12px">
+                  <img style="width: 30px;height: 30px;margin-top: 6px" src="../../assets/icon/server.svg" />
+                  {{item.server}}
+                </a>
+              </li>
+            </ul>
         </div>
       </div>
     </div>
-    <div nz-col nzSpan="2"></div>
+    <div nz-col nzSpan="3"></div>
   </div>
+  <div nz-row  class="body_row">
+    <div nz-col nzSpan="3"></div>
+    <div nz-col nzSpan="18">
+      <div nz-row [nzGutter]="24">
+        <div nz-col nzSpan="6">
+          <div class="state_card">
+              <div class="state_span" style="border: 2px #BF7A6A solid">
+                <img style="width: 30px;height: 30px;" src="../../assets/icon/CPU.svg" />
+              </div>
+              <div class="state_content_span">
+                 <div style="color: #ffffff;height: 70%"> CPU使用率</div>
+                <div class="div_process">
+                  <nz-progress  [nzPercent]="70"  nzSize="small" [nzStrokeColor]="{ '50%': '#BF7A6A', '100%': '#BF7A6A' }"></nz-progress>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div nz-col nzSpan="6">
+          <div  class="state_card">
+              <div class="state_span" style="border: 2px #D2A968 solid">
+                <img style="width: 30px;height: 30px;" src="../../assets/icon/RAM.svg" />
+              </div>
+              <div class="state_content_span">
+                <div style="color: #ffffff;height: 70%"> 内存使用率</div>
+                <div class="div_process">
+                  <nz-progress  [nzPercent]="90"  nzSize="small" [nzStrokeColor]="{ '50%': '#D2A968', '100%': '#D2A968' }"></nz-progress>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div nz-col nzSpan="6">
+          <div  class="state_card">
+              <div class="state_span" style="border: 2px #A9BD7A solid" >
+                <img style="width: 30px;height: 30px;" src="../../assets/icon/Disk.svg" />
+              </div>
+            <div class="state_content_span">
+              <div style="color: #ffffff;height: 70%"> 磁盘使用率</div>
+              <div class="div_process">
+                <nz-progress  [nzPercent]="90"  nzSize="small" [nzStrokeColor]="{ '50%': '#A9BD7A', '100%': '#A9BD7A' }"></nz-progress>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzSpan="6">
+          <div  class="state_card">
+              <div class="state_span" style="border: 2px #6FB4CE solid">
+                <img style="width: 30px;height: 30px;" src="../../assets/icon/flow.svg" />
+              </div>
+            <div class="state_content_span">
+              <div style="color: #ffffff;height: 70%"> 网络流量</div>
+              <div class="div_process">
+              <!--  <nz-progress  [nzPercent]="90"  nzSize="small" [nzStrokeColor]="{ '50%': '#A9BD7A', '100%': '#D4237A' }"></nz-progress>-->
+                <label style="color: #6FB4CE;font-size: 12px">发送628G / 接收747G</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div nz-col nzSpan="3"></div>
+  </div>
+
+  <div nz-row  class="body_row">
+    <div nz-col nzSpan="3"></div>
+    <div nz-col nzSpan="18">
+      <div nz-row [nzGutter]="24">
+        <div nz-col nzSpan="8">
+          <app-cpu-gauge></app-cpu-gauge>
+        </div>
+        <div nz-col nzSpan="8">
+          <app-ram-gauge></app-ram-gauge>
+        </div>
+        <div nz-col nzSpan="8">
+          <app-disk-gauge></app-disk-gauge>
+        </div>
+      </div>
+    </div>
+    <div nz-col nzSpan="3"></div>
+  </div>
+
+  <div nz-row  class="body_row">
+    <div nz-col nzSpan="3"></div>
+    <div nz-col nzSpan="18">
+      <div nz-row [nzGutter]="24">
+        <div nz-col nzSpan="12">
+          <app-cpu-line></app-cpu-line>
+        </div>
+        <div nz-col nzSpan="12">
+          <app-ram-line></app-ram-line>
+        </div>
+      </div>
+    </div>
+    <div nz-col nzSpan="3"></div>
+  </div>
+
+  <div nz-row  class="body_row">
+    <div nz-col nzSpan="3"></div>
+    <div nz-col nzSpan="18">
+      <div nz-row>
+        <div nz-col nzSpan="24">
+          <app-flow-line></app-flow-line>
+        </div>
+      </div>
+    </div>
+    <div nz-col nzSpan="3"></div>
+  </div>
+
 </div>

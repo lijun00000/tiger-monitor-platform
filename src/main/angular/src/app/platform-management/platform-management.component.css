@@ -1,0 +1,89 @@
+.node-list{
+  margin: 0;
+}
+.node-list li{
+  margin-left: 10px;
+  float: right;
+  list-style: none;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  padding: 0;
+  background: #A9BD7A;
+  border-radius: 3px;
+  /*A9BD7A  #6FB4CE */
+  /**呼吸灯效果*/
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-name: breathe;
+  -webkit-animation-duration: 2000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+}
+.node-list a{
+  color: #ffffff;
+}
+
+.node-list li:hover{
+  background: #6FB4CE;
+  /*A9BD7A  #6FB4CE */
+}
+
+.node-list li.li_select{
+  background: #6FB4CE;
+  /*A9BD7A  #6FB4CE */
+}
+.body_row{
+  margin: 24px 0;
+}
+
+.state_card{
+  background: #2a3039;
+  border-color: #2a3039;
+  padding: 16px;
+  height: 90px;
+  width: 100%;
+}
+
+.state_span{
+  height: 60px;
+  width: 30%;
+  line-height: 55px;
+  text-align: center;
+  border-radius: 3px;
+  float: left;
+}
+
+.state_content_span{
+  height: 60px;
+  width:  60%;
+  float: left;
+  margin-left: 16px;
+}
+
+
+.state_content_span .ant-progress-inner{
+  background: #2a3039;
+  color: white;
+}
+
+.div_process >>> div.ant-progress-inner{
+  background: #353C48;
+}
+.div_process >>> span{
+  color: #ffffff;
+}
+
+
+
+
+@-webkit-keyframes breathe {
+  0% {
+    opacity: .6;
+    box-shadow: 0 1px 8px rgba(255, 255, 255, 0.6);
+  }
+  100% {
+    opacity: 1;
+    /*border: 1px solid #A9BD7A;*/
+    box-shadow: 0 1px 8px #ffffff;
+  }
+}

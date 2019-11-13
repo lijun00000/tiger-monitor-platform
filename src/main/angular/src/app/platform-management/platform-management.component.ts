@@ -8,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class PlatformManagementComponent implements OnInit {
 
   servers = [
-    {server:"node-1"},
-    {server:"node-2"},
-    {server:"node-3"},
-    {server:"node-4"},
-    {server:"node-5"}
+    {server:"node-5",selected:false},
+    {server:"node-4",selected:false},
+    {server:"node-3",selected:false},
+    {server:"node-2",selected:true},
+    {server:"node-1",selected:false}
   ];
   constructor() { }
 

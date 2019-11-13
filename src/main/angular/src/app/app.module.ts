@@ -11,6 +11,12 @@ import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import { HeaderComponent } from './header/header.component';
 import { PlatformManagementComponent } from './platform-management/platform-management.component';
+import { CpuGaugeComponent } from './charts/cpu-gauge/cpu-gauge.component';
+import { RamGaugeComponent } from './charts/ram-gauge/ram-gauge.component';
+import { DiskGaugeComponent } from './charts/disk-gauge/disk-gauge.component';
+import { CpuLineComponent } from './charts/cpu-line/cpu-line.component';
+import { RamLineComponent } from './charts/ram-line/ram-line.component';
+import { FlowLineComponent } from './charts/flow-line/flow-line.component';
 
 registerLocaleData(zh);
 
@@ -18,7 +24,13 @@ registerLocaleData(zh);
   declarations: [
     AppComponent,
     HeaderComponent,
-    PlatformManagementComponent
+    PlatformManagementComponent,
+    CpuGaugeComponent,
+    RamGaugeComponent,
+    DiskGaugeComponent,
+    CpuLineComponent,
+    RamLineComponent,
+    FlowLineComponent
   ],
   imports: [
     BrowserModule,
