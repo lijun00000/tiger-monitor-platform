@@ -1,60 +1,68 @@
 .system-card-outer {
   margin: 0 auto;
-  width: 100%;
+  width: 80%;
   /*border: #A9BD7A 2px solid;*/
   border-radius: 3px;
+  margin: 24px 0;
 
 }
-.system-card-img img{
+
+.system-card-img img {
   width: 80%;
   height: 80%;
 }
+
 .system-card-img {
   margin: 0 auto;
   width: 100%;
   padding: 15px 0;
-  height: 280px;
+  height: 200px;
   text-align: center;
   border-bottom: 2px white solid;
   font-size: 18px;
 }
-.system-card-img:hover{
+
+.system-card-img:hover {
   cursor: pointer;
   background: #D4237A;
 }
+
 .system-card-info {
-  height:50px;
+  height: 50px;
   line-height: 50px;
   text-align: center;
 }
 
-.div-breathe{
+.div-breathe {
   -webkit-animation-timing-function: ease-in-out;
   -webkit-animation-name: breathe;
   -webkit-animation-duration: 1500ms;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-direction: alternate;
 }
+
 @-webkit-keyframes breathe {
   0% {
     opacity: 1;
-    box-shadow: 0 1px 5px rgba(255, 255, 255, 0.6);
+    box-shadow: 0 1px 8px rgba(255, 255, 255, 0.6);
   }
   100% {
     opacity: 1;
     /*border: 1px solid #A9BD7A;*/
-    box-shadow: 0 1px 5px #ffffff;
+    box-shadow: 0 1px 8px #ffffff;
   }
 }
-.system-card-info label a{
+
+.system-card-info label a {
   color: white;
 }
 
-.system-card-info label a:hover{
+.system-card-info label a:hover {
   color: #D4237A;
   border-color: #D4237A;
 }
-.system-card-info label a{
+
+.system-card-info label a {
   display: inline-block;
   border: 2px white solid;
   border-radius: 3px;
@@ -62,13 +70,9 @@
   width: 4em;
   font-size: 16px;
 }
-nz-card{
-  background: #2a3039;
-  border-color: #2a3039;
-}
 
 
-.state_card{
+.state_card {
   background: #2a3039;
   border-color: #2a3039;
   padding: 16px;
@@ -76,33 +80,138 @@ nz-card{
   width: 100%;
 }
 
-.state_span{
+.state_span {
   height: 60px;
-  width: 30%;
-  line-height: 55px;
+  width: 68px;
   text-align: center;
   border-radius: 3px;
   float: left;
+  background: #A9BD7A;
+
+/*  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-name: breathe;
+  -webkit-animation-duration: 2000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;*/
 }
 
-.state_content_span{
+.state_span img {
+  display: inline;
+}
+
+.state_img_span {
   height: 60px;
-  width:  60%;
+  width: 68px;
+  text-align: center;
+  border-radius: 3px;
+  float: left;
+  background: #6FB4CE;
+
+/*  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-name: breathe;
+  -webkit-animation-duration: 2000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;*/
+}
+
+.state_img_span img {
+  display: inline;
+}
+
+
+
+
+.state_content_span {
+  height: 60px;
+  width: 40%;
   float: left;
   margin-left: 16px;
 }
 
+.state_btn_div{
+  height: 60px;
+  width: 25%;
+  float: right;
+  margin-left: 16px;
+  text-align: center;
+}
 
-.state_content_span .ant-progress-inner{
-  background: #2a3039;
+
+
+.state_up_span {
+  height: 60px;
+  width: 20%;
+  float: left;
+  margin-left: 16px;
+}
+.state_up_span label {
+  color: #6FB4CE;
+}
+.state_up_div{
+  height: 60px;
+  width: 55%;
+  float: right;
+  text-align: center;
+}
+.state_up_div >>> .ant-statistic-title{
   color: white;
 }
 
+.state_up_div >>> .ant-statistic-content-value-int{
+  color: #6FB4CE;
+  font-size: 40px;
+}
 
-.node-list{
+.state_btn_div div{
+  width: 100%;
+  padding-bottom: 10px;
+  padding-top: 2px;
+}
+
+.state_kind_div{
+  height: 60px;
+  width: 55%;
+  float: right;
+  text-align: center;
+}
+.kind_div_inner_se >>> .ant-statistic-content-value-int{
+  color: #D2A968;
+  font-size: 25px;
+}
+
+.kind_div_inner_se >>> .ant-statistic-title{
+  color: #D2A968;
+}
+
+
+.kind_div_inner_du >>> .ant-statistic-content-value-int{
+  color: #BF7A6A;
+  font-size: 25px;
+}
+
+.kind_div_inner_du >>> .ant-statistic-title{
+  color: #BF7A6A;
+}
+
+.kind_div_inner{
+  float: left;
+  width: 45%;
+}
+
+
+
+
+
+nz-statistic{
+  color: white;
+}
+
+.node-list {
   margin: 0;
 }
-.node-list li{
+
+
+.node-list li {
   margin-left: 10px;
   float: right;
   list-style: none;
@@ -110,33 +219,61 @@ nz-card{
   height: 60px;
   text-align: center;
   padding: 0;
-  background: #A9BD7A;
   border-radius: 3px;
-  /*A9BD7A  #6FB4CE */
-  /**呼吸灯效果*/
+}
+
+.node-list li {
   -webkit-animation-timing-function: ease-in-out;
   -webkit-animation-name: breathe;
   -webkit-animation-duration: 2000ms;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-direction: alternate;
 }
-.node-list a{
+
+
+.node-list a {
   color: #ffffff;
 }
 
-.node-list li:hover{
+.node-list li:hover {
+  background: #D4237A;
+  /*A9BD7A  #6FB4CE */
+}
+
+.node-list li.li_select {
+
+  /*A9BD7A  #6FB4CE */
+  background: #D4237A;
+}
+
+.li_select_1 {
+  background: #A9BD7A;
+}
+
+.li_select_2 {
   background: #6FB4CE;
-  /*A9BD7A  #6FB4CE */
 }
 
-.node-list li.li_select{
-
-  /*A9BD7A  #6FB4CE */
+.li_select_3 {
+  background: #BF7A6A;
 }
 
-[nz-carousel-content]{
-  height: 200px;
+
+[nz-carousel-content] {
+  height: auto;
   width: 100%;
-  background: #2a3039;
+  /*  background: #2a3039;*/
+  color: white;
+  padding: 0;
+  margin: 0;
+}
+
+/*.div_steps >>> .ant-steps-item-finish>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title{
   color: white;
 }
+.div_steps >>> .ant-steps-icon{
+  color: white;
+}
+.div_steps >>> .ant-steps-item-process>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title{
+  color: white;
+}*/

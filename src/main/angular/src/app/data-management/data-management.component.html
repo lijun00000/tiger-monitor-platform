@@ -1,0 +1,203 @@
+<app-header></app-header>
+
+
+
+
+<div class="main_body">
+  <div nz-row class="body_row">
+    <div nz-col nzSpan="3"></div>
+    <div nz-col nzSpan="18">
+      <div nz-row>
+        <div nz-col nzSpan="12">
+          <label style="font-size: 18px;color: #6FB4CE;margin-left: 10px;">
+            <i nz-icon nzType="database" nzTheme="fill"></i> 数据管理
+          </label><!--<br/>
+            <label style="color: #ccc;font-size: 12px;margin-left: 10px">
+              服务器运行状态
+            </label>-->
+        </div>
+        <div nz-col nzSpan="12" style="float: right">
+          <ul class="node-list">
+            <li class="li_select_2" (click)="data_tab.nzSelectedIndex=3">
+              <a style="font-size: 12px">
+                <img style="width: 30px;height: 30px;margin-top: 4px" src="../../assets/icon/process.svg"/><br/>
+                数据处理
+              </a>
+            </li>
+            <li class="li_select_1" (click)="data_tab.nzSelectedIndex=2">
+              <a style="font-size: 12px">
+                <img style="width: 30px;height: 30px;margin-top: 4px" src="../../assets/icon/upload.svg"/><br/>
+                数据上传
+              </a>
+            </li>
+            <li class="li_select_3" (click)="data_tab.nzSelectedIndex=1">
+              <a style="font-size: 12px">
+                <img style="width: 30px;height: 30px;margin-top: 4px" src="../../assets/icon/download.svg"/><br/>
+                Zone数据
+              </a>
+            </li>
+            <li class="li_select_4" (click)="data_tab.nzSelectedIndex=0">
+              <a style="font-size: 12px">
+                <img style="width: 30px;height: 30px;margin-top: 4px" src="../../assets/icon/download.svg"/><br/>
+                RPD7数据
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div nz-col nzSpan="3"></div>
+  </div>
+
+  <div nz-row class="body_row">
+    <div nz-col nzSpan="3"></div>
+    <div nz-col nzSpan="18">
+      <div nz-row [nzGutter]="24">
+        <div nz-col nzSpan="6">
+          <div class="state_card">
+            <div class="state_span" style="background:  #BF7A6A">
+              <label class="label-font">.com</label>
+            </div>
+            <div class="state_content_span">
+              <div style="color: #ffffff;height: 30%"> .com域名数量</div>
+              <div class="div_com">
+                <nz-statistic [nzSuffix]="'&nbsp;(1.4亿)'" [nzValue]="142545846 | number"></nz-statistic>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzSpan="6">
+          <div class="state_card">
+            <div class="state_span" style="background: #D2A968">
+              <label class="label-font">.net</label>
+            </div>
+            <div class="state_content_span">
+              <div style="color: #ffffff;height: 30%"> .net域名数量</div>
+              <div class="div_net">
+                <nz-statistic [nzSuffix]="'&nbsp;(4千万)'" [nzValue]="41254246 | number"></nz-statistic>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzSpan="6">
+          <div class="state_card">
+            <div class="state_span" style="background: #A9BD7A">
+              <label class="label-font">.org</label>
+            </div>
+            <div class="state_content_span">
+              <div style="color: #ffffff;height: 30%"> .org域名数量</div>
+              <div class="div_org">
+                <nz-statistic [nzSuffix]="'&nbsp;(1千万)'" [nzValue]="11254246 | number"></nz-statistic>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzSpan="6">
+          <div class="state_card">
+            <div class="state_span" style="background:#6FB4CE">
+              <label class="label-font">NS</label>
+            </div>
+            <div class="state_content_span">
+              <div style="color: #ffffff;height: 30%"> 域名NS记录数</div>
+              <div class="div_ns">
+                <nz-statistic [nzSuffix]="'&nbsp;(3百万)'" [nzValue]="3254246 | number"></nz-statistic>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div nz-col nzSpan="3"></div>
+  </div>
+
+  <div nz-row class="body_row">
+    <div nz-col nzSpan="3"></div>
+    <div nz-col nzSpan="18">
+      <div nz-row [nzGutter]="24">
+        <div nz-col nzSpan="6">
+          <div class="state_card">
+            <div class="state_span" style="background:#6FB4CE">
+              <img style="width: 38px;height: 38px;" src="../../assets/icon/cert.svg"/>
+            </div>
+            <div class="state_content_span">
+              <div style="color: #ffffff;height: 30%"> 证书数量</div>
+              <div class="div_ns">
+                <nz-statistic [nzSuffix]="'&nbsp;(3百万)'" [nzValue]="3254246 | number"></nz-statistic>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzSpan="6">
+          <div class="state_card">
+            <div class="state_span" style="background: #A9BD7A">
+              <img style="width: 40px;height: 40px;" src="../../assets/icon/apt.svg"/>
+            </div>
+            <div class="state_content_span">
+              <div style="color: #ffffff;height: 30%"> APT数量</div>
+              <div class="div_org">
+                <nz-statistic [nzSuffix]="'&nbsp;(1千万)'" [nzValue]="11254246 | number"></nz-statistic>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzSpan="6">
+          <div class="state_card">
+            <div class="state_span" style="background: #D2A968">
+              <img style="width: 40px;height: 40px;" src="../../assets/icon/blacklist.svg"/>
+            </div>
+            <div class="state_content_span">
+              <div style="color: #ffffff;height: 30%"> 黑名单数量</div>
+              <div class="div_net">
+                <nz-statistic [nzSuffix]="'&nbsp;(4千万)'" [nzValue]="41254246 | number"></nz-statistic>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzSpan="6">
+          <div class="state_card">
+            <div class="state_span" style="background:  #BF7A6A">
+              <img style="width: 40px;height: 40px;" src="../../assets/icon/IP.svg"/>
+            </div>
+            <div class="state_content_span">
+              <div style="color: #ffffff;height: 30%"> 解析IP数量</div>
+              <div class="div_com">
+                <nz-statistic [nzSuffix]="'&nbsp;(1.4亿)'" [nzValue]="142545846 | number"></nz-statistic>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div nz-col nzSpan="3"></div>
+  </div>
+
+
+  <div nz-row class="body_row">
+    <div nz-col nzSpan="3"></div>
+    <div nz-col nzSpan="18">
+      <div nz-row>
+        <div nz-col nzSpan="24">
+          <div class="tab_display">
+            <nz-tabset #data_tab>
+              <nz-tab >
+                <app-rapid-table></app-rapid-table>
+              </nz-tab>
+              <nz-tab >
+                <app-zone-table></app-zone-table>
+              </nz-tab >
+              <nz-tab>
+                <app-upload-table></app-upload-table>
+              </nz-tab>
+              <nz-tab>
+                <app-process-table></app-process-table>
+              </nz-tab>
+            </nz-tabset>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div nz-col nzSpan="3"></div>
+  </div>
+</div>
+

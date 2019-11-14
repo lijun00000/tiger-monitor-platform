@@ -1,0 +1,64 @@
+
+.div_rapid_data_table >>> .ant-table-body{
+  color: #ffffff;
+  background: #2a3039;
+}
+.div_rapid_data_table >>> .ant-table-body tr:hover{
+  color: #2a3039;
+}
+
+.div_rapid_data_table >>> .ant-table-content{
+  color: #ffffff;
+  background: #2a3039;
+  border-color: #353C48;
+}
+
+.div_rapid_data_table >>> img{
+  width: 100%;
+  text-align: center;
+}
+.div_rapid_data_table >>> .ant-table-placeholder{
+  color: #6FB4CE;
+  background: #2a3039;
+  text-align: center;
+  margin: 0 auto;
+  border-color: #353C48;
+}
+.div_rapid_data_table >>> .ant-empty-description{
+  color: #6FB4CE;
+}
+.div_rapid_data_table >>> .ant-table-row{
+  border-color: #353C48;
+}
+.div_rapid_data_table >>> .ant-table-row th{
+  color: #6FB4CE;
+  background: #2a3039;
+  border-color: #353C48;
+}
+.div_rapid_data_table >>> table{
+  border-color: #353C48;
+}
+.div_rapid_data_table >>> table td{
+  border-color: #353C48;
+}
+
+.div_rapid_data_table >>> .ant-table-title{
+  color: #ffffff;
+  border-color: #353C48;
+  background: #2a3039;
+  line-height: 20px;
+}
+.div_rapid_data_table >>> .ant-table-title label{
+  line-height: 20px;
+  font-size: 15px;
+  display: inline-block;
+  margin-top: 3px;
+}
+
+
+.div_rapid_data_table >>> .ant-pagination-item-ellipsis{
+  color: white;
+}
+.div_rapid_data_table >>> .ant-pagination-item-ellipsis:hover{
+  color: white;
+}

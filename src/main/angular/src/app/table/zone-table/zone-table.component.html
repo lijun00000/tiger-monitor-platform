@@ -1,0 +1,49 @@
+<ng-template #zone_table_search>
+  <div nz-row>
+    <div nz-col nzSpan="5">
+      <label>Zone数据下载记录</label>
+    </div>
+    <div nz-col nzSpan="4">
+    </div>
+    <div nz-col nzSpan="5" style="padding: 0;font-size: 12px;font-family: '微软雅黑'">
+      <nz-range-picker style="width: 98%;"></nz-range-picker>
+    </div>
+    <div nz-col nzSpan="4" style="padding: 0">
+      <nz-select style="width: 98%;" nzAllowClear nzPlaceHolder="文件类型">
+        <nz-option nzLabel="不限" nzValue=""></nz-option>
+        <nz-option nzLabel="境内" nzValue="境内"></nz-option>
+        <nz-option nzLabel="境外" nzValue="境外"></nz-option>
+      </nz-select>
+    </div>
+    <div nz-col nzSpan="4" style="padding: 0">
+      <nz-select style="width: 100%;" nzAllowClear nzPlaceHolder="类型选择">
+        <nz-option nzLabel="不限" nzValue=""></nz-option>
+        <nz-option nzLabel="色情" nzValue="色情"></nz-option>
+        <nz-option nzLabel="赌博" nzValue="赌博"></nz-option>
+      </nz-select>
+    </div>
+    <div nz-col nzSpan="2" style="text-align: right">
+      <button nzType="primary" style="width: 96%" class="domain-list-button" nz-button><i nz-icon nzType="search"></i>搜索
+      </button>
+    </div>
+  </div>
+</ng-template>
+<div class="div_zone_data_table">
+  <nz-table style="margin: 0 auto;" #domainTable2 [nzData]="listOfData" nzBordered nzPageSize="10"
+            [nzTitle]="zone_table_search">
+    <thead>
+    <tr>
+      <th nzWidth="150px">Name</th>
+      <th nzWidth="150px">Age</th>
+      <th>Address</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let data of domainTable2.data">
+      <td>{{ data.name }}</td>
+      <td>{{ data.age }}</td>
+      <td>{{ data.address }}</td>
+    </tr>
+    </tbody>
+  </nz-table>
+</div>

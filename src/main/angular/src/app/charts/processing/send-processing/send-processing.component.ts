@@ -1,23 +1,23 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-flow-line',
-  templateUrl: './flow-line.component.html',
-  styleUrls: ['./flow-line.component.css']
+  selector: 'app-send-processing',
+  templateUrl: './send-processing.component.html',
+  styleUrls: ['./send-processing.component.css']
 })
-export class FlowLineComponent implements OnInit, AfterViewInit {
+export class SendProcessingComponent implements OnInit, AfterViewInit {
 
-  ngAfterViewInit():void{
+
+  ngAfterViewInit(): void {
     let datax = [];
     let datay = [];
-    let datay2 = [];
-    let line = echarts.init(document.getElementById("flow-line"));
+    let line = echarts.init(document.getElementById("send-processing"));
     let option = {
       title: {
-        text: "网络吞吐量速率(kb/s)",
+        text: "域名接收速率",
         x: 'center',
         textStyle: {
-          color: '#D2A968', //353C48
+          color: '#A9BD7A', //353C48
           fontSize: 14,
           fontWeight: 'normal'
         },
@@ -26,12 +26,12 @@ export class FlowLineComponent implements OnInit, AfterViewInit {
       },
       tooltip: {},
       xAxis: [{
-        /*nameTextStyle: {
-          color: "#E4ECF5"
-        },*/
+        /* nameTextStyle: {
+           color: "#E4ECF5"
+         },*/
         axisLine: {
           lineStyle: {
-            color: "#D2A968"
+            color: "#A9BD7A"
           }
         },
         type: 'category',
@@ -41,53 +41,29 @@ export class FlowLineComponent implements OnInit, AfterViewInit {
 
       ],
       yAxis: [{
+        /*        name: "使用率",*/
+        /*      nameTextStyle: {
+                color: "#E4ECF5",
+                fontFamily: "微软雅黑"
+              },*/
         splitLine: {
           lineStyle: {
             color: "#353C48"
           }
         },
-        type: 'value', min: 0, max: 1000,
+        type: 'value', min: 0, max: 100,
         axisLine: {
           lineStyle: {
-            color: "#D2A968"
+            color: "#A9BD7A"
           }
         }
       }],
       series: [
         {
-          name: '上传速率',
+          name: 'CPU使用率',
           type: 'line',
           radius: '30%',
           data: datay,
-          itemStyle: {
-            normal: {
-              opacity: 1,
-              color: "#6FB4CE"
-            },
-            emphasis: {
-              shadowBlur: 0,
-              shadowOffsetX: 0
-            }
-          }, areaStyle: {
-            color: {
-              type: 'linear',
-              x: 1,
-              y: 1,
-              x2: 0,
-              y2: 0,
-              colorStops: [{
-                offset: 0, color: '#E4ECF5' // 0% 处的颜色
-              }, {
-                offset: 1, color: '#6FB4CE' // 100% 处的颜色
-              }],
-            }
-          }
-        },
-        {
-          name: '下载速率',
-          type: 'line',
-          radius: '30%',
-          data: datay2,
           itemStyle: {
             normal: {
               opacity: 1,
@@ -111,31 +87,24 @@ export class FlowLineComponent implements OnInit, AfterViewInit {
               }],
             }
           }
-        }
-        ]
+        }]
     };
     line.setOption(option);
     setInterval(function () {
       let now = new Date();
-      let value = parseInt((Math.random() * 1000).toFixed(2));
-      let value2 = parseInt((Math.random() * 1000).toFixed(2));
-      if (datax.length >= 100)
+      let value = parseInt((Math.random() * 100).toFixed(2));
+      if (datax.length >= 20)
         datax.shift();
-      if (datay.length >= 100)
+      if (datay.length >= 20)
         datay.shift();
-      if (datay2.length >= 100)
-        datay2.shift();
       datax.push([now.getHours(), now.getMinutes(), now.getSeconds()].join(':'));
       datay.push(value);
-      datay2.push(value2);
       line.setOption({
         xAxis: {
           data: datax,
         },
         series: [{
           data: datay
-        },{
-          data: datay2
         }]
       });
     }, 2000);

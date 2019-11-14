@@ -18,6 +18,14 @@ import { CpuLineComponent } from './charts/cpu-line/cpu-line.component';
 import { RamLineComponent } from './charts/ram-line/ram-line.component';
 import { FlowLineComponent } from './charts/flow-line/flow-line.component';
 import { SystemManagementComponent } from './system-management/system-management.component';
+import { SendProcessingComponent } from './charts/processing/send-processing/send-processing.component';
+import { ReceiveProcessingComponent } from './charts/processing/receive-processing/receive-processing.component';
+import { DomainChartComponent } from './charts/domain-chart/domain-chart.component';
+import { DataManagementComponent } from './data-management/data-management.component';
+import { RapidTableComponent } from './table/rapid-table/rapid-table.component';
+import { ZoneTableComponent } from './table/zone-table/zone-table.component';
+import { UploadTableComponent } from './table/upload-table/upload-table.component';
+import { ProcessTableComponent } from './table/process-table/process-table.component';
 
 registerLocaleData(zh);
 
@@ -32,7 +40,15 @@ registerLocaleData(zh);
     CpuLineComponent,
     RamLineComponent,
     FlowLineComponent,
-    SystemManagementComponent
+    SystemManagementComponent,
+    SendProcessingComponent,
+    ReceiveProcessingComponent,
+    DomainChartComponent,
+    DataManagementComponent,
+    RapidTableComponent,
+    ZoneTableComponent,
+    UploadTableComponent,
+    ProcessTableComponent,
   ],
   imports: [
     BrowserModule,
