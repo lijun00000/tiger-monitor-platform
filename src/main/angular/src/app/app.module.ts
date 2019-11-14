@@ -17,6 +17,7 @@ import { DiskGaugeComponent } from './charts/disk-gauge/disk-gauge.component';
 import { CpuLineComponent } from './charts/cpu-line/cpu-line.component';
 import { RamLineComponent } from './charts/ram-line/ram-line.component';
 import { FlowLineComponent } from './charts/flow-line/flow-line.component';
+import { SystemManagementComponent } from './system-management/system-management.component';
 
 registerLocaleData(zh);
 
@@ -30,7 +31,8 @@ registerLocaleData(zh);
     DiskGaugeComponent,
     CpuLineComponent,
     RamLineComponent,
-    FlowLineComponent
+    FlowLineComponent,
+    SystemManagementComponent
   ],
   imports: [
     BrowserModule,

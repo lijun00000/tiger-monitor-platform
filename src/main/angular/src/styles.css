@@ -30,4 +30,6 @@ body{
   border-radius: .15rem;
 }
 
-
+.body_row{
+  margin: 24px 0;
+}

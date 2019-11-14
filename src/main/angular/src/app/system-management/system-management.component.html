@@ -1,0 +1,185 @@
+<app-header></app-header>
+
+<div class="main_body">
+  <div nz-row class="body_row">
+    <div nz-col nzSpan="3"></div>
+    <div nz-col nzSpan="18">
+      <div nz-row>
+        <div nz-col nzSpan="12">
+          <label style="font-size: 22px;color: #6FB4CE;margin-left: 10px;">
+            <i nz-icon nzType="setting" nzTheme="fill"></i> 系统监控
+          </label><!--<br/>
+          <label style="color: #ccc;font-size: 12px;margin-left: 10px">
+           &lt;!&ndash; 系统运行状态&ndash;&gt;
+          </label>-->
+        </div>
+        <div nz-col nzSpan="12" style="float: right">
+          <ul class="node-list">
+            <li class="li_select" style="background: #A9BD7A" >
+              <a style="font-size: 12px">
+                <img style="width: 35px;height: 35px;margin-top: 6px" src="../../assets/icon/shield.svg" /><br/>
+                净网+
+              </a>
+            </li>
+            <li class="li_select" style="background: #6FB4CE">
+              <a style="font-size: 12px" >
+                <img style="width: 35px;height: 35px;margin-top: 6px" src="../../assets/icon/threat1.svg" /><br/>
+                威胁情报
+              </a>
+            </li>
+            <li class="li_select" style="background: #BF7A6A">
+              <a style="font-size: 12px">
+                <img style="width: 35px;height: 35px;margin-top: 6px" src="../../assets/icon/domain1.svg" /><br/>
+                域名信誉
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+    <div nz-col nzSpan="3"></div>
+  </div>
+
+  <div nz-row  class="body_row">
+    <div nz-col nzSpan="3"></div>
+    <div nz-col nzSpan="18">
+      <div nz-row>
+        <div nz-col nzSpan="24">
+          <nz-carousel [nzEffect]="'scrollx'">
+            <div nz-carousel-content>
+              <h3>1</h3>
+            </div>
+            <div nz-carousel-content>
+              <h3>2</h3>
+            </div>
+            <div nz-carousel-content>
+              <h3>3</h3>
+            </div>
+          </nz-carousel>
+        </div>
+      </div>
+    </div>
+    <div nz-col nzSpan="3"></div>
+  </div>
+
+
+  <div nz-row  class="body_row">
+    <div nz-col nzSpan="3"></div>
+    <div nz-col nzSpan="18">
+      <div nz-row [nzGutter]="24">
+        <div nz-col nzSpan="6">
+          <div class="state_card">
+            <div class="state_span" style="border: 2px #BF7A6A solid">
+              <img style="width: 45px;height: 45px;" src="../../assets/icon/domain.svg" />
+            </div>
+            <div class="state_content_span">
+              <div style="color: #ffffff;height: 70%"> 域名信誉系统</div>
+              <div class="div_process">
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzSpan="6">
+          <div  class="state_card">
+            <div class="state_span" style="border: 2px #6FB4CE solid">
+              <img style="width: 45px;height: 45px;" src="../../assets/icon/threat.svg" />
+            </div>
+            <div class="state_content_span">
+              <div style="color: #ffffff;height: 70%"> 威胁情报系统 </div>
+              <div class="div_process">
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzSpan="6">
+          <div  class="state_card">
+            <div class="state_span" style="border: 2px #A9BD7A solid" >
+              <img style="width: 45px;height: 45px;" src="../../assets/icon/shield1.svg" />
+            </div>
+            <div class="state_content_span">
+              <div style="color: #ffffff;height: 70%"> 净网+系统</div>
+              <div class="div_process">
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzSpan="6">
+          <div  class="state_card">
+            <div class="state_span" style="border: 2px #bfbfbf solid">
+              <img style="width: 45px;height: 45px;" src="../../assets/icon/question1.svg" />
+            </div>
+            <div class="state_content_span">
+              <div style="color: #ffffff;height: 70%"> 敬请期待</div>
+              <div class="div_process">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div nz-col nzSpan="3"></div>
+  </div>
+  <div nz-row  class="body_row">
+    <div nz-col nzSpan="3"></div>
+
+      <div nz-col nzSpan="18">
+
+          <div nz-row nzGutter="48">
+            <div nz-col nzSpan="2"></div>
+            <div nz-col nzSpan="5">
+                <div class="system-card-outer div-breathe" style="background: #A9BD7A;">
+                  <div class="system-card-img">
+                    <img src="../../assets/icon/shield.svg" /><br/>
+                    <label>净网+系统</label>
+                  </div>
+                  <div class="system-card-info">
+                    <label> <a>重启</a> </label> &nbsp;  &nbsp; <label> <a>关闭</a> </label>
+                  </div>
+                </div>
+            </div>
+            <div nz-col nzSpan="5">
+              <div class="system-card-outer div-breathe"  style="background: #6FB4CE;">
+                <div class="system-card-img">
+                  <img src="../../assets/icon/threat1.svg" /><br/>
+                  <label>威胁情报系统</label>
+                </div>
+                <div class="system-card-info">
+                  <label> <a>重启</a> </label> &nbsp;  &nbsp; <label> <a>关闭</a> </label>
+                </div>
+              </div>
+            </div>
+            <div nz-col nzSpan="5">
+              <div class="system-card-outer div-breathe"  style="background: #BF7A6A;">
+                <div class="system-card-img">
+                  <img src="../../assets/icon/domain1.svg" /><br/>
+                  <label>域名信誉系统</label>
+                </div>
+                <div class="system-card-info">
+                  <label> <a>重启</a> </label> &nbsp;  &nbsp; <label> <a>关闭</a> </label>
+                </div>
+              </div>
+            </div>
+            <div nz-col nzSpan="5">
+              <div class="system-card-outer"  style="background: #ccc;">
+                <div class="system-card-img">
+                  <img src="../../assets/icon/question.svg" /><br/>
+                  <label>未知系统</label>
+                </div>
+                <div class="system-card-info">
+                  <label>敬请期待</label>
+                </div>
+              </div>
+            </div>
+            <div nz-col nzSpan="2"></div>
+          </div>
+      </div>
+
+    <div nz-col nzSpan="3"></div>
+  </div>
+
+</div>
