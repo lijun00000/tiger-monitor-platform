@@ -26,6 +26,7 @@ import { RapidTableComponent } from './table/rapid-table/rapid-table.component';
 import { ZoneTableComponent } from './table/zone-table/zone-table.component';
 import { UploadTableComponent } from './table/upload-table/upload-table.component';
 import { ProcessTableComponent } from './table/process-table/process-table.component';
+import { LoginComponent } from './login/login.component';
 
 registerLocaleData(zh);
 
@@ -49,6 +50,7 @@ registerLocaleData(zh);
     ZoneTableComponent,
     UploadTableComponent,
     ProcessTableComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
