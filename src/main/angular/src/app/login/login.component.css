@@ -1,0 +1,33 @@
+.login_div {
+  width: 35%;
+  margin: 0 auto;
+  height: 300px;
+  background: #2a3039;
+  padding: 15px 35px 0 35px;
+  color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 5px 5px 10px #2a3039;
+  -webkit-box-shadow: 5px 5px 10px #2a3039;
+  box-shadow: 5px 5px 10px #2a3039;
+}
+
+.login_div h2 {
+  color: white;
+}
+
+.login_div >>> .ant-checkbox-wrapper {
+  color: #BFBFBF;
+}
+.login_div >>> .ant-input-affix-wrapper input{
+  background: rgba(245,245,245,0.1);
+  border-color: #8d9498;
+  color: #FFF;
+}
+.login_div >>> .ant-checkbox-inner{
+  background: rgba(245,245,245,0.1);
+  border-color: #8d9498;
+}
+
+.login-form-forgot{
+  color: #BFBFBF;
+}
