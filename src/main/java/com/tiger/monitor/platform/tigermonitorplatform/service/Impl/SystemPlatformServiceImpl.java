@@ -172,7 +172,7 @@ public class SystemPlatformServiceImpl implements SystemPlatformService {
                     BigDecimal b = new BigDecimal( (Double) value.get(1));
                     double doubleValue = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
                     usageDateAndData.getData().add(doubleValue);
-                    usageDateAndData.getDateTime().add(Utils.formatZipName((String)value.get(0)));
+                    usageDateAndData.getDateTime().add(Utils.formatTimeHHmmss((String)value.get(0)));
                 }
             }
         }
@@ -191,7 +191,7 @@ public class SystemPlatformServiceImpl implements SystemPlatformService {
                     BigDecimal b = new BigDecimal( (Double) value.get(1));
                     double doubleValue = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
                     usageDateAndData.getData().add(doubleValue);
-                    usageDateAndData.getDateTime().add(Utils.formatZipName((String)value.get(0)));
+                    usageDateAndData.getDateTime().add(Utils.formatTimeHHmmss((String)value.get(0)));
                 }
             }
         }
@@ -213,7 +213,7 @@ public class SystemPlatformServiceImpl implements SystemPlatformService {
                 for (List<Object> value : values) {
                     BigDecimal b = new BigDecimal( (Double) value.get(1));
                     double doubleValue = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
-                    dataTime.add(Utils.formatZipName((String)value.get(0)));
+                    dataTime.add(Utils.formatTimeHHmmss((String)value.get(0)));
                     long round = Math.round((Double) value.get(1));
                     dataRecv.add((round/1024)+"");
                 }
