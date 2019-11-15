@@ -46,13 +46,10 @@
   color: #ffffff;
   border-color: #353C48;
   background: #2a3039;
-  line-height: 20px;
 }
 .div_rapid_data_table >>> .ant-table-title label{
-  line-height: 20px;
   font-size: 15px;
   display: inline-block;
-  margin-top: 3px;
 }
 
 
