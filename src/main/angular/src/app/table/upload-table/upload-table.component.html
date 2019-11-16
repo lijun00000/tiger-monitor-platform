@@ -6,44 +6,91 @@
     <div nz-col nzSpan="4">
     </div>
     <div nz-col nzSpan="5" style="padding: 0;font-size: 12px;font-family: '微软雅黑'">
-      <nz-range-picker style="width: 98%;"></nz-range-picker>
+      <nz-range-picker style="width: 98%;" [(ngModel)]="dateRage" (ngModelChange)="setTime()"></nz-range-picker>
     </div>
     <div nz-col nzSpan="4" style="padding: 0">
-      <nz-select style="width: 98%;" nzAllowClear nzPlaceHolder="文件类型">
-        <nz-option nzLabel="不限" nzValue=""></nz-option>
-        <nz-option nzLabel="境内" nzValue="境内"></nz-option>
-        <nz-option nzLabel="境外" nzValue="境外"></nz-option>
+      <nz-select style="width: 98%;" [(ngModel)]="fileType" nzAllowClear nzPlaceHolder="文件类型">
+        <nz-option nzLabel="全部" nzValue=""></nz-option>
+        <nz-option nzLabel="fdns" nzValue="fdns"></nz-option>
+        <nz-option nzLabel="http" nzValue="http"></nz-option>
+        <nz-option nzLabel="https" nzValue="https"></nz-option>
+        <nz-option nzLabel="moressl" nzValue="moressl"></nz-option>
+        <nz-option nzLabel="ssl" nzValue="ssl"></nz-option>
+        <nz-option nzLabel="tcp" nzValue="tcp"></nz-option>
+        <nz-option nzLabel="udp" nzValue="udp"></nz-option>
+        <nz-option nzLabel="zone" nzValue="zone"></nz-option>
       </nz-select>
     </div>
     <div nz-col nzSpan="4" style="padding: 0">
-      <nz-select style="width: 100%;" nzAllowClear nzPlaceHolder="类型选择">
-        <nz-option nzLabel="不限" nzValue=""></nz-option>
-        <nz-option nzLabel="色情" nzValue="色情"></nz-option>
-        <nz-option nzLabel="赌博" nzValue="赌博"></nz-option>
+      <nz-select style="width: 100%;" [(ngModel)]="status" nzAllowClear nzPlaceHolder="处理状态">
+        <nz-option nzLabel="全部" nzValue=""></nz-option>
+        <nz-option nzLabel="处理完成" nzValue="FINISH"></nz-option>
+        <nz-option nzLabel="初始化" nzValue="INITING"></nz-option>
+        <nz-option nzLabel="等待" nzValue="WAITING"></nz-option>
       </nz-select>
     </div>
     <div nz-col nzSpan="2" style="text-align: right">
-      <button nzType="primary" style="width: 96%" class="domain-list-button" nz-button><i nz-icon nzType="search"></i>搜索
+      <button (click)="search()" nzType="primary" style="width: 96%" class="domain-list-button" nz-button><i nz-icon nzType="search"></i>搜索
       </button>
     </div>
   </div>
 </ng-template>
 <div class="div_upload_data_table">
-  <nz-table style="margin: 0 auto;" #domainTable3 [nzData]="listOfData" nzBordered nzPageSize="10"
+  <nz-table style="margin: 0 auto;" #domainTable3 [nzData]="list" nzBordered [nzShowPagination]="false"
             [nzTitle]="upload_table_search">
-    <thead>
+    <thead (nzSortChange)="sort($event)" nzSingleSort>
     <tr>
-      <th nzWidth="150px">Name</th>
-      <th nzWidth="150px">Age</th>
-      <th>Address</th>
+      <!--<th [nzWidth]="'1%'" nzShowExpand></th>-->
+      <th [nzWidth]="'39%'" [nzShowSort]="true" nzSortKey="file_name">文件名</th>
+      <th [nzWidth]="'9%'" [nzShowSort]="true" nzSortKey="file_length">文件大小</th>
+      <th [nzWidth]="'16%'" [nzShowSort]="true" nzSortKey="file_type">类型/子类型</th>
+      <th [nzWidth]="'9%'" [nzShowSort]="true" nzSortKey="file_time">文件时间</th>
+      <!--<th [nzWidth]="'10%'" [nzShowSort]="true" nzSortKey="upload_time">上传时间</th>-->
+      <th [nzWidth]="'9%'" [nzShowSort]="true" nzSortKey="start_exec_time">开始时间</th>
+      <th [nzWidth]="'10%'" [nzShowSort]="true" nzSortKey="elapsed_time">耗时(毫秒)</th>
+      <th [nzAlign]="'center'" [nzWidth]="'9%'" [nzShowSort]="true" nzSortKey="exec_state">处理状态</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let data of domainTable3.data">
-      <td>{{ data.name }}</td>
-      <td>{{ data.age }}</td>
-      <td>{{ data.address }}</td>
+      <!--<td nzShowExpand [(nzExpand)]="mapOfExpandData[data.uuid]"></td>-->
+      <td>{{data.fileName}}</td>
+      <td>{{data.fileLength}}</td>
+      <td>{{data.fileType}}/{{data.subType}}</td>
+      <td>{{data.fileTime}}</td>
+      <!--<td>{{data.uploadTime}}</td>-->
+      <td>{{data.startExecTime}}</td>
+      <td>{{data.elapsedTime}}</td>
+      <td [nzAlign]="'center'">
+        <nz-tag *ngIf="data.execState == 'FINISH'" [nzColor]="'#A9BD7A'">处理完成</nz-tag>
+        <nz-tag *ngIf="data.execState != 'FINISH'" [nzColor]="'#6FB4CE'">正在处理</nz-tag>
+      </td>
     </tr>
+    <!--<ng-template ngFor let-data [ngForOf]="domainTable3.data">
+      <tr>
+        <td nzShowExpand [(nzExpand)]="mapOfExpandData[data.uuid]"></td>
+        <td>{{data.fileName}}</td>
+        <td>{{data.fileLength}}</td>
+        <td>{{data.fileType}}/{{data.subType}}</td>
+        <td>{{data.fileTime}}</td>
+        <td>{{data.uploadTime}}</td>
+        <td>{{data.startExecTime}}</td>
+        <td>{{data.elapsedTime}}</td>
+        <td [nzAlign]="'center'">
+          <nz-tag *ngIf="data.execState == 'FINISH'" [nzColor]="'#A9BD7A'">处理完成</nz-tag>
+          <nz-tag *ngIf="data.execState != 'FINISH'" [nzColor]="'#6FB4CE'">正在处理</nz-tag>
+        </td>
+      </tr>
+      <tr [nzExpand]="mapOfExpandData[data.uuid]">
+        <th></th>
+        <th colspan="3">文件路径</th>
+      </tr>
+      <tr [nzExpand]="mapOfExpandData[data.uuid]">
+        <td></td>
+        <td colspan="3">{{data.path}}</td>
+      </tr>
+    </ng-template>-->
     </tbody>
   </nz-table>
+  <nz-pagination [(nzPageIndex)]="pageIndex" [nzPageSize]="pageSize" [nzTotal]="total" (nzPageIndexChange)="indexChange()" style="float: right;margin-top: 15px"></nz-pagination>
 </div>

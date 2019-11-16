@@ -2,9 +2,192 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tiger.monitor.platform.tigermonitorplatform.dao.mapper_64.TableMapper">
 
+    <resultMap id="rapid7" type="com.tiger.monitor.platform.tigermonitorplatform.entity.Rapid7Data">
+        <result property="fileName" column="file_name"/>
+        <result property="fileType" column="file_type"/>
+        <result property="fileSize" column="file_size"/>
+        <result property="downloadTime" column="download_time"/>
+        <result property="downloadStatus" column="download_status"/>
+    </resultMap>
 
-    <select id="test" resultType="java.lang.Integer">
-        select 10
+    <select id="selectRapid7Data" parameterType="com.tiger.monitor.platform.tigermonitorplatform.entity.PageResult" resultMap="rapid7">
+        select file_name,file_type,file_size,download_time download_time,download_status
+        from rapid7_record where 1 = 1
+        <if test="startTime != '' and startTime != null and endTime != '' and endTime != null">
+            and DATE_FORMAT(download_time,'%Y-%m-%d') between #{startTime} and #{endTime}
+        </if>
+        <if test="fileType != null and fileType != ''">
+            and file_type = #{fileType}
+        </if>
+        <if test="status != null and status != ''">
+            and download_status = #{status}
+        </if>
+        <if test="sortName != '' and sortName != null and sortValue != '' and sortValue != null">
+            order by ${sortName} ${sortValue}
+        </if>
+        limit ${pageIndex}, ${pageSize}
+    </select>
+    <select id="selectRapid7Total" parameterType="com.tiger.monitor.platform.tigermonitorplatform.entity.PageResult" resultType="Integer">
+        select count(*)
+        from rapid7_record where 1 = 1
+        <if test="startTime != '' and startTime != null and endTime != '' and endTime != null">
+            and DATE_FORMAT(download_time,'%Y-%m-%d') between #{startTime} and #{endTime}
+        </if>
+        <if test="fileType != null and fileType != ''">
+            and file_type = #{fileType}
+        </if>
+        <if test="status != null and status != ''">
+            and download_status = #{status}
+        </if>
+    </select>
+
+
+    <resultMap id="record" type="com.tiger.monitor.platform.tigermonitorplatform.entity.RecordData">
+        <result property="localName" column="local_name"/>
+        <result property="fileType" column="file_type"/>
+        <result property="fileSize" column="file_size"/>
+        <result property="startTime" column="start_time"/>
+        <result property="endTime" column="end_time"/>
+        <result property="elapsedTime" column="elapsed_time"/>
+        <result property="downloadStatus" column="download_status"/>
+    </resultMap>
+
+    <select id="selectRecordData" parameterType="com.tiger.monitor.platform.tigermonitorplatform.entity.PageResult" resultMap="record">
+        select local_name,file_type,file_size,start_time,end_time,elapsed_time,download_status
+        from file_record where 1 = 1
+        <if test="startTime != null and startTime != '' and endTime != null and endTime != ''">
+            and DATE_FORMAT(start_time,'%Y-%m-%d') between #{startTime} and #{endTime}
+        </if>
+        <if test="fileType != null and fileType != ''">
+            and file_type = #{fileType}
+        </if>
+        <if test="status != null and status != ''">
+            and download_status = #{status}
+        </if>
+        <if test="sortName != null and sortName != '' and sortValue != null and sortValue != ''">
+            order by ${sortName} ${sortValue}
+        </if>
+        <if test="pageIndex != '' and pageIndex != null and pageSize != '' and pageSize != null">
+            limit ${pageIndex}, ${pageSize}
+        </if>
+    </select>
+
+    <select id="selectRecordTotal" parameterType="com.tiger.monitor.platform.tigermonitorplatform.entity.PageResult" resultType="Integer">
+        select count(*)
+        from file_record where 1 = 1
+        <if test="startTime != null and startTime != '' and endTime != null and endTime != ''">
+            and DATE_FORMAT(start_time,'%Y-%m-%d') between #{startTime} and #{endTime}
+        </if>
+        <if test="fileType != null and fileType != ''">
+            and file_type = #{fileType}
+        </if>
+        <if test="status != null and status != ''">
+            and download_status = #{status}
+        </if>
+    </select>
+
+
+    <resultMap id="uploadMap" type="com.tiger.monitor.platform.tigermonitorplatform.entity.UploadData">
+        <result property="uuid" column="uuid"/>
+        <result property="fileName" column="file_name"/>
+        <result property="path" column="path"/>
+        <result property="fileLength" column="file_length"/>
+        <result property="fileType" column="file_type"/>
+        <result property="subType" column="sub_type"/>
+        <result property="fileTime" column="file_time"/>
+        <result property="uploadTime" column="upload_time"/>
+        <result property="startExecTime" column="start_exec_time"/>
+        <result property="elapsedTime" column="elapsed_time"/>
+        <result property="execState" column="exec_state"/>
+    </resultMap>
+
+    <select id="selectUploadData" parameterType="com.tiger.monitor.platform.tigermonitorplatform.entity.PageResult" resultMap="uploadMap">
+        SELECT uuid, file_name, path, file_type, sub_type, file_time, upload_time, start_exec_time, elapsed_time, exec_state, file_length
+        from file_upload
+        where 1 = 1
+        <if test="startTime != '' and startTime != null and endTime != '' and endTime != null">
+            and FROM_UNIXTIME(upload_time, '%Y-%m-%d') between #{startTime} and #{endTime}
+        </if>
+        <if test="fileType != null and fileType != ''">
+            and file_type = #{fileType}
+        </if>
+        <if test="status != null and status != ''">
+            and exec_state = #{status}
+        </if>
+        <if test="sortName != null and sortName != '' and sortValue != null and sortValue != ''">
+            order by ${sortName} ${sortValue}
+        </if>
+        <if test="pageIndex != '' and pageIndex != null and pageSize != '' and pageSize != null">
+            limit ${pageIndex}, ${pageSize}
+        </if>
+    </select>
+
+    <select id="selectUploadTotal" parameterType="com.tiger.monitor.platform.tigermonitorplatform.entity.PageResult" resultType="Integer">
+        select count(*) from file_upload
+        where 1 = 1
+        <if test="startTime != '' and startTime != null and endTime != '' and endTime != null">
+            and FROM_UNIXTIME(upload_time, '%Y-%m-%d') between #{startTime} and #{endTime}
+        </if>
+        <if test="fileType != null and fileType != ''">
+            and file_type = #{fileType}
+        </if>
+        <if test="status != null and status != ''">
+            and exec_state = #{status}
+        </if>
+    </select>
+
+
+    <resultMap id="execMap" type="com.tiger.monitor.platform.tigermonitorplatform.entity.ExecutorHistory">
+        <result property="uuid" column="uuid"/>
+        <result property="fileName" column="file_name"/>
+        <result property="fileType" column="file_type"/>
+        <result property="subType" column="sub_type"/>
+        <result property="execTime" column="exec_time"/>
+        <result property="activePath" column="active_path"/>
+        <result property="updatePath" column="update_path"/>
+        <result property="historyPath" column="history_path"/>
+        <result property="isDel" column="is_del"/>
+    </resultMap>
+
+    <select id="selectExecutorHistoryData" parameterType="com.tiger.monitor.platform.tigermonitorplatform.entity.PageResult" resultMap="execMap">
+        select uuid, file_name, file_type, sub_type, exec_time, active_path, update_path, history_path, is_del
+        from file_executor_history
+        where 1 = 1
+        <if test="startTime != '' and startTime != null and endTime != '' and endTime != null">
+            and FROM_UNIXTIME(exec_time/1000,'%Y-%m-%d') between #{startTime} and #{endTime}
+        </if>
+        <if test="fileType != null and fileType != ''">
+            and file_type = #{fileType}
+        </if>
+        <if test="status != null and status != ''">
+            and is_del = #{status}
+        </if>
+        <if test="sortName != null and sortName != '' and sortValue != null and sortValue != ''">
+            order by ${sortName} ${sortValue}
+        </if>
+        <if test="pageIndex != '' and pageIndex != null and pageSize != '' and pageSize != null">
+            limit ${pageIndex}, ${pageSize}
+        </if>
+    </select>
+
+    <select id="selectExecutorHistoryTotal" parameterType="com.tiger.monitor.platform.tigermonitorplatform.entity.PageResult" resultType="Integer">
+        select count(*) from file_executor_history
+        where 1 = 1
+        <if test="startTime != '' and startTime != null and endTime != '' and endTime != null">
+            and FROM_UNIXTIME(exec_time/1000,'%Y-%m-%d') between #{startTime} and #{endTime}
+        </if>
+        <if test="fileType != null and fileType != ''">
+            and file_type = #{fileType}
+        </if>
+        <if test="status != null and status != ''">
+            and is_del = #{status}
+        </if>
+    </select>
+
+    <select id="getFileType"  resultType="String">
+        select file_type
+        from file_executor_history
+        GROUP BY file_type
     </select>
 
 </mapper>
