@@ -1,5 +1,6 @@
 package com.tiger.monitor.platform.tigermonitorplatform.controller;
 
+import com.tiger.monitor.platform.tigermonitorplatform.entity.DomainProcessorMeter;
 import com.tiger.monitor.platform.tigermonitorplatform.service.SystemPlatformService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -69,10 +70,7 @@ public class SystemPlatformController {
      * @return
      */
     @RequestMapping(value = "/cpuGauge/{hostNode}")
-    public Object cpuGauge(@PathVariable("hostNode")String hostNode){
-
-        return null;
-    }
+    public Object cpuGauge(@PathVariable("hostNode")String hostNode){ return null;}
 
     /**
      * 内存 使用率 仪表盘
@@ -80,10 +78,7 @@ public class SystemPlatformController {
      * @return
      */
     @RequestMapping(value = "/memoryGauge/{hostNode}")
-    public Object memoryGauge(@PathVariable("hostNode")String hostNode){
-
-        return null;
-    }
+    public Object memoryGauge(@PathVariable("hostNode")String hostNode){ return null;}
 
     /**
      * 磁盘 使用率 仪表盘
@@ -91,10 +86,7 @@ public class SystemPlatformController {
      * @return
      */
     @RequestMapping(value = "/diskGauge/{hostNode}")
-    public Object diskGauge(@PathVariable("hostNode")String hostNode){
-
-        return null;
-    }
+    public Object diskGauge(@PathVariable("hostNode")String hostNode){ return null;}
 
 
 
@@ -134,7 +126,29 @@ public class SystemPlatformController {
         return systemPlatformService.selectNetSentAndRecvLine(serverName,currentTimeMillis+"ms",null);
     }
 
+    /**
+     * 发送域名的数量
+     * @return
+     */
+    @RequestMapping(value = "/domainProducer")
+    public Object domainProducer(){
+        long endTime = System.currentTimeMillis();
+        long startTime = endTime-1000*60*5;
+        DomainProcessorMeter domainProcessorMeter = systemPlatformService.selectDomainProducerByType( startTime,  endTime);
+        return domainProcessorMeter;
+    }
 
+    /**
+     * 域名处理的速率
+     * @return
+     */
+    @RequestMapping(value = "/domainConsumer")
+    public Object domainConsumer(){
+        long endTime = System.currentTimeMillis();
+        long startTime = endTime-1000*60*5;
+        DomainProcessorMeter domainProcessorMeter = systemPlatformService.selectDomainConsumerByType(startTime,endTime );
+        return domainProcessorMeter;
+    }
 
     private String getServerName(String name){
         String serveName="";
