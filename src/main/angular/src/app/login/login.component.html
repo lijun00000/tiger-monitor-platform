@@ -7,12 +7,12 @@
         <span style="font-size: 16px">泰格安运维管理平台</span></div>
         <div style="margin-top: 20px">
           <nz-input-group nzPrefixIcon="user">
-            <input  [autofocus]="true" style="font-size: 14px;font-family: '微软雅黑'" type="text" nz-input placeholder="请输入用户名" nzSize="large"/>
+            <input  [autofocus]="true" style="font-size: 14px;font-family: '微软雅黑'" type="text" nz-input placeholder="用户名" nzSize="large" [(ngModel)]="userAccount"/>
           </nz-input-group>
         </div>
         <div style="margin-top: 20px">
           <nz-input-group nzPrefixIcon="lock">
-            <input  style="font-size: 14px;font-family: '微软雅黑'" type="password"  nz-input placeholder="请输入密码" nzSize="large"/>
+            <input  style="font-size: 14px;font-family: '微软雅黑'" type="password"  nz-input placeholder="请输入密码" nzSize="large" [(ngModel)]="password"/>
           </nz-input-group>
         </div>
         <div style="margin-top: 20px;text-align: right">
@@ -22,7 +22,8 @@
           <a class="login-form-forgot" >忘记密码</a>
         </div>
         <div style="margin-top: 20px;text-align: right">
-          <button style="width: 100%;font-family: '微软雅黑';background: #6FB4CE;border: none" nz-button class="login-form-button" [nzType]="'primary'" >登录</button>
+          <button style="width: 100%;font-family: '微软雅黑';background: #6FB4CE;border: none" nz-button class="login-form-button" [nzType]="'primary'"
+          (click)="login()">登录</button>
         </div>
       </div>
     </div>

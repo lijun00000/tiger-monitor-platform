@@ -6,44 +6,61 @@
     <div nz-col nzSpan="4">
     </div>
     <div nz-col nzSpan="5" style="padding: 0;font-size: 12px;font-family: '微软雅黑'">
-      <nz-range-picker style="width: 98%;"></nz-range-picker>
+      <nz-range-picker style="width: 98%;" [(ngModel)]="dateRage" (ngModelChange)="setTime()"></nz-range-picker>
     </div>
     <div nz-col nzSpan="4" style="padding: 0">
-      <nz-select style="width: 98%;" nzAllowClear nzPlaceHolder="文件类型">
-        <nz-option nzLabel="不限" nzValue=""></nz-option>
-        <nz-option nzLabel="境内" nzValue="境内"></nz-option>
-        <nz-option nzLabel="境外" nzValue="境外"></nz-option>
+      <nz-select style="width: 98%;" [(ngModel)]="fileType" nzAllowClear nzPlaceHolder="文件类型">
+        <nz-option nzLabel="全部" nzValue=""></nz-option>
+        <nz-option nzLabel="asc" nzValue="asc"></nz-option>
+        <nz-option nzLabel="gz" nzValue="gz"></nz-option>
+        <nz-option nzLabel="md5" nzValue="md5"></nz-option>
+        <nz-option nzLabel="sig" nzValue="sig"></nz-option>
+        <nz-option nzLabel="signatures" nzValue="signatures"></nz-option>
+        <nz-option nzLabel="zone" nzValue="zone"></nz-option>
       </nz-select>
     </div>
     <div nz-col nzSpan="4" style="padding: 0">
-      <nz-select style="width: 100%;" nzAllowClear nzPlaceHolder="类型选择">
-        <nz-option nzLabel="不限" nzValue=""></nz-option>
-        <nz-option nzLabel="色情" nzValue="色情"></nz-option>
-        <nz-option nzLabel="赌博" nzValue="赌博"></nz-option>
+      <nz-select style="width: 100%;" [(ngModel)]="status" nzAllowClear nzPlaceHolder="下载状态">
+        <nz-option nzLabel="全部" nzValue=""></nz-option>
+        <nz-option nzLabel="下载完成" nzValue="finally"></nz-option>
+        <nz-option nzLabel="正在下载" nzValue="starting"></nz-option>
+        <nz-option nzLabel="等待" nzValue="waiting"></nz-option>
       </nz-select>
     </div>
     <div nz-col nzSpan="2" style="text-align: right">
-      <button nzType="primary" style="width: 96%" class="domain-list-button" nz-button><i nz-icon nzType="search"></i>搜索
+      <button (click)="search()" nzType="primary" style="width: 96%" class="domain-list-button" nz-button><i nz-icon nzType="search"></i>搜索
       </button>
     </div>
   </div>
 </ng-template>
 <div class="div_zone_data_table">
-  <nz-table style="margin: 0 auto;" #domainTable2 [nzData]="listOfData" nzBordered nzPageSize="10"
+  <nz-table style="margin: 0 auto;" #domainTable2 [nzData]="list" nzBordered [nzShowPagination]="false"
             [nzTitle]="zone_table_search">
-    <thead>
+    <thead (nzSortChange)="sort($event)" nzSingleSort>
     <tr>
-      <th nzWidth="150px">Name</th>
-      <th nzWidth="150px">Age</th>
-      <th>Address</th>
+      <th [nzWidth]="'49%'" [nzShowSort]="true" nzSortKey="local_name">文件名</th>
+      <th [nzWidth]="'8%'" [nzShowSort]="true" nzSortKey="file_type">文件类型</th>
+      <th [nzWidth]="'8%'" [nzShowSort]="true" nzSortKey="file_size">文件大小</th>
+      <th [nzWidth]="'9%'" [nzShowSort]="true" nzSortKey="start_time">开始时间</th>
+      <th [nzWidth]="'9%'" [nzShowSort]="true" nzSortKey="end_time">结束时间</th>
+      <th [nzWidth]="'9%'" [nzShowSort]="true" nzSortKey="elapsed_time">耗时(毫秒)</th>
+      <th [nzAlign]="'center'" [nzWidth]="'8%'" [nzShowSort]="true" nzSortKey="download_status">下载状态</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let data of domainTable2.data">
-      <td>{{ data.name }}</td>
-      <td>{{ data.age }}</td>
-      <td>{{ data.address }}</td>
+      <td>{{data.localName}}</td>
+      <td>{{data.fileType}}</td>
+      <td>{{data.fileSize}}</td>
+      <td>{{data.startTime}}</td>
+      <td>{{data.endTime}}</td>
+      <td>{{data.elapsedTime}}</td>
+      <td [nzAlign]="'center'">
+        <nz-tag *ngIf="data.downloadStatus == 'finally'" [nzColor]="'#A9BD7A'">下载完成</nz-tag>
+        <nz-tag *ngIf="data.downloadStatus != 'finally'" [nzColor]="'#6FB4CE'">正在下载</nz-tag>
+      </td>
     </tr>
     </tbody>
   </nz-table>
+  <nz-pagination [(nzPageIndex)]="pageIndex" [nzPageSize]="pageSize" [nzTotal]="total" (nzPageIndexChange)="indexChange()" style="float: right;margin-top: 15px"></nz-pagination>
 </div>

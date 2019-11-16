@@ -1,6 +1,7 @@
 package com.tiger.monitor.platform.tigermonitorplatform.service;
 
 
+import com.tiger.monitor.platform.tigermonitorplatform.entity.DomainProcessorMeter;
 import com.tiger.monitor.platform.tigermonitorplatform.entity.NetSentAndRecvProgress;
 import com.tiger.monitor.platform.tigermonitorplatform.entity.UsageDateAndData;
 import org.influxdb.dto.QueryResult;
@@ -27,9 +28,12 @@ public interface SystemPlatformService {
 
     UsageDateAndData selectMemoryUsageLine(String serverNodeName, String startTime, String endTime);
 
-
     HashMap<String,Object> selectNetSentAndRecvLine(String serverNodeName, String startTime, String endTime);
 
+
+    DomainProcessorMeter selectDomainConsumerByType( long startTime, long endTime);
+
+    DomainProcessorMeter selectDomainProducerByType(long startTime, long endTime);
 
 
 }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tiger.monitor.platform.tigermonitorplatform.dao.mapper_61.EChartsMapper">
+
+    <resultMap id="EChartsMap" type="com.tiger.monitor.platform.tigermonitorplatform.entity.ECharts">
+        <result column="date" property="date"/>
+        <result column="creation_date" property="creationDate"/>
+        <result column="s_count" property="seCount"/>
+        <result column="d_count" property="duCount"/>
+    </resultMap>
+
+    <select id="selectEChartsDataMonth" parameterType="com.tiger.monitor.platform.tigermonitorplatform.entity.ECharts" resultMap="EChartsMap">
+        select
+        a.creation_date, a.date,
+        case b.count_seqing is null when 1  then 0 else b.count_seqing end as s_count,
+        case ISNULL(c.count_dubo) when 1 then 0 else c.count_dubo end as d_count
+        from
+        (SELECT
+        <if test="endDate == null or endDate == ''">
+            DATE_FORMAT(DATE_SUB( (select creation_date from domain_list GROUP BY creation_date ORDER BY creation_date desc limit 1), INTERVAL ac - 1 DAY), '%Y-%m-%d') as creation_date,
+            DATE_FORMAT(DATE_SUB( (select creation_date from domain_list GROUP BY creation_date ORDER BY creation_date desc limit 1), INTERVAL ac - 1 DAY), '%m-%d') as `date`
+        </if>
+        <if test="endDate != null and endDate != ''">
+            DATE_FORMAT(DATE_SUB( #{endDate}, INTERVAL ac - 1 DAY), '%Y-%m-%d') as creation_date,
+            DATE_FORMAT(DATE_SUB( #{endDate}, INTERVAL ac - 1 DAY), '%m-%d') as `date`
+        </if>
+        FROM (
+        SELECT @ai:=@ai+1 as ac from
+        (SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5) ac1,
+        (SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6) ac2,
+        (SELECT @ai:=0) xc0
+        ) ad
+        ) a
+        left join
+        (select creation_date,count(*) count_seqing from domain_list
+        where page_type = '色情'
+        GROUP BY creation_date) b on a.creation_date = b.creation_date
+        left join
+        (select creation_date,count(*) count_dubo from domain_list
+        where page_type = '赌博'
+        GROUP BY creation_date) c on a.creation_date = c.creation_date
+        <if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
+            where a.creation_date between #{startDate} and #{endDate}
+        </if>
+        order by a.creation_date
+    </select>
+
+</mapper>
