@@ -33,17 +33,17 @@
             [nzTitle]="process_table_search">
     <thead (nzSortChange)="sort($event)" nzSingleSort>
     <tr>
-      <th [nzWidth]="'45%'" [nzShowSort]="true" nzSortKey="file_name">文件名</th>
-      <th [nzWidth]="'25%'" [nzShowSort]="true" nzSortKey="file_type">文件类型/子类型</th>
-      <th [nzWidth]="'15%'" [nzShowSort]="true" nzSortKey="exec_time">处理时间</th>
+      <th [nzAlign]="'center'" [nzWidth]="'45%'" [nzShowSort]="true" nzSortKey="file_name">文件名</th>
+      <th [nzAlign]="'center'" [nzWidth]="'25%'" [nzShowSort]="true" nzSortKey="file_type">文件类型/子类型</th>
+      <th [nzAlign]="'center'" [nzWidth]="'15%'" [nzShowSort]="true" nzSortKey="exec_time">处理时间</th>
       <th [nzAlign]="'center'" [nzWidth]="'15%'" [nzShowSort]="true" nzSortKey="is_del">删除状态</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let data of domainTable4.data">
-      <td>{{data.fileName}}</td>
-      <td>{{data.fileType}}/{{data.subType}}</td>
-      <td>{{data.execTime}}</td>
+      <td [nzAlign]="'center'">{{data.fileName}}</td>
+      <td [nzAlign]="'center'">{{data.fileType}}/{{data.subType}}</td>
+      <td [nzAlign]="'center'">{{data.execTime}}</td>
       <td [nzAlign]="'center'">
         <nz-tag *ngIf="data.isDel == '未删除'" [nzColor]="'#A9BD7A'">{{data.isDel}}</nz-tag>
         <nz-tag *ngIf="data.isDel != '未删除'" [nzColor]="'#BF7A6A'">{{data.isDel}}</nz-tag>

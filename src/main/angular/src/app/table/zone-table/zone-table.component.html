@@ -38,23 +38,23 @@
             [nzTitle]="zone_table_search">
     <thead (nzSortChange)="sort($event)" nzSingleSort>
     <tr>
-      <th [nzWidth]="'49%'" [nzShowSort]="true" nzSortKey="local_name">文件名</th>
-      <th [nzWidth]="'8%'" [nzShowSort]="true" nzSortKey="file_type">文件类型</th>
-      <th [nzWidth]="'8%'" [nzShowSort]="true" nzSortKey="file_size">文件大小</th>
-      <th [nzWidth]="'9%'" [nzShowSort]="true" nzSortKey="start_time">开始时间</th>
-      <th [nzWidth]="'9%'" [nzShowSort]="true" nzSortKey="end_time">结束时间</th>
-      <th [nzWidth]="'9%'" [nzShowSort]="true" nzSortKey="elapsed_time">耗时(毫秒)</th>
+      <th [nzAlign]="'center'" [nzWidth]="'49%'" [nzShowSort]="true" nzSortKey="local_name">文件名</th>
+      <th [nzAlign]="'center'" [nzWidth]="'8%'" [nzShowSort]="true" nzSortKey="file_type">文件类型</th>
+      <th [nzAlign]="'center'" [nzWidth]="'8%'" [nzShowSort]="true" nzSortKey="file_size">文件大小</th>
+      <th [nzAlign]="'center'" [nzWidth]="'9%'" [nzShowSort]="true" nzSortKey="start_time">开始时间</th>
+      <th [nzAlign]="'center'" [nzWidth]="'9%'" [nzShowSort]="true" nzSortKey="end_time">结束时间</th>
+      <th [nzAlign]="'center'" [nzWidth]="'9%'" [nzShowSort]="true" nzSortKey="elapsed_time">耗时(毫秒)</th>
       <th [nzAlign]="'center'" [nzWidth]="'8%'" [nzShowSort]="true" nzSortKey="download_status">下载状态</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let data of domainTable2.data">
-      <td>{{data.localName}}</td>
-      <td>{{data.fileType}}</td>
-      <td>{{data.fileSize}}</td>
-      <td>{{data.startTime}}</td>
-      <td>{{data.endTime}}</td>
-      <td>{{data.elapsedTime}}</td>
+      <td [nzAlign]="'center'">{{data.localName}}</td>
+      <td [nzAlign]="'center'">{{data.fileType}}</td>
+      <td [nzAlign]="'center'">{{data.fileSize}}</td>
+      <td [nzAlign]="'center'">{{data.startTime}}</td>
+      <td [nzAlign]="'center'">{{data.endTime}}</td>
+      <td [nzAlign]="'center'">{{data.elapsedTime}}</td>
       <td [nzAlign]="'center'">
         <nz-tag *ngIf="data.downloadStatus == 'finally'" [nzColor]="'#A9BD7A'">下载完成</nz-tag>
         <nz-tag *ngIf="data.downloadStatus != 'finally'" [nzColor]="'#6FB4CE'">正在下载</nz-tag>
