@@ -3,9 +3,7 @@
   color: #ffffff;
   background: #2a3039;
 }
-.div_process_data_table >>> .ant-table-body tr:hover{
-  color: #2a3039;
-}
+
 
 .div_process_data_table >>> .ant-table-content{
   color: #ffffff;
@@ -53,6 +51,9 @@
   font-size: 15px;
   display: inline-block;
   margin-top: 3px;
+}
+.div_process_data_table >>> .ant-table-tbody>tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-row-selected)>td, .ant-table-tbody>tr:hover:not(.ant-table-expanded-row):not(.ant-table-row-selected)>td, .ant-table-thead>tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-row-selected)>td, .ant-table-thead>tr:hover:not(.ant-table-expanded-row):not(.ant-table-row-selected)>td{
+  background: #353C48;
 }
 
 
