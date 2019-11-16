@@ -60,3 +60,10 @@
 .div_zone_data_table >>> .ant-pagination-item-ellipsis:hover{
   color: white;
 }
+.div_zone_data_table >>> .ant-table-thead>tr>th .ant-table-header-column .ant-table-column-sorters:hover::before{
+  background: #353C48;
+}
+
+.div_zone_data_table >>> .ant-table-thead>tr>th .ant-table-header-column .ant-table-column-sorters::before{
+  background: #2a3039;
+}

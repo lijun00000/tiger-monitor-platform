@@ -54,7 +54,13 @@
   background: #353C48;
 }
 
+.div_rapid_data_table >>> .ant-table-thead>tr>th .ant-table-header-column .ant-table-column-sorters:hover::before{
+  background: #353C48;
+}
 
+.div_rapid_data_table >>> .ant-table-thead>tr>th .ant-table-header-column .ant-table-column-sorters::before{
+  background: #2a3039;
+}
 .div_rapid_data_table >>> .ant-pagination-item-ellipsis{
   color: white;
 }
