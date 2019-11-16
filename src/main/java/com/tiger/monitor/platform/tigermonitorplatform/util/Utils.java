@@ -18,6 +18,18 @@ public class Utils {
     }
 
 
+    public static String formatTimeHHmmss(long dateTime) {
+        String format="";
+        try {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+            format = simpleDateFormat.format(new Date(dateTime ));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return format;
+    }
+
+
 
     public static Date parseUTCText(String text)  {
         Date date =null;

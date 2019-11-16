@@ -32,7 +32,7 @@ public class InfluxDbUtils {
      *
      * @return influxDb实例
      */
-    private InfluxDB influxDbBuild() {
+    public InfluxDB influxDbBuild() {
         if (influxDB == null) {
             if (userName == null && password == null){
                 influxDB = InfluxDBFactory.connect(url);
