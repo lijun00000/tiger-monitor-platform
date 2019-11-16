@@ -5,19 +5,22 @@ import {PlatformManagementComponent} from "./platform-management/platform-manage
 import {SystemManagementComponent} from "./system-management/system-management.component";
 import {DataManagementComponent} from "./data-management/data-management.component";
 import {LoginComponent} from "./login/login.component";
+import {LoginGuard} from "./guard/LoginGuard";
 
 
 const routes: Routes = [
-  {path: "header", component: HeaderComponent},
-  {path: "platform-management", component: PlatformManagementComponent},
-  {path: "system-management", component:SystemManagementComponent},
-  {path: "data-management", component:DataManagementComponent},
-  {path: "login", component:LoginComponent}
+  {path: "", component: LoginComponent},
+  {path: "header", component: HeaderComponent, canActivate: [LoginGuard]},
+  {path: "platform-management", component: PlatformManagementComponent, canActivate: [LoginGuard]},
+  {path: "system-management", component: SystemManagementComponent, canActivate: [LoginGuard]},
+  {path: "data-management", component: DataManagementComponent, canActivate: [LoginGuard]},
+  {path: "login", component: LoginComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [LoginGuard]
 })
 export class AppRoutingModule {
 }
