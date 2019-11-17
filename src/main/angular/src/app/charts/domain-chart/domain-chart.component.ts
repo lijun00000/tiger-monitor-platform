@@ -38,7 +38,6 @@ export class DomainChartComponent implements OnInit, AfterViewInit {
         this.seData_m = data.seCountList;
         this.duData_m = data.duCountList;
         this.sumData_m = data.sumCountList;
-        console.log(data);
         this.eChartsOption(this.date_m, this.seData_m, this.duData_m, this.sumData_m);
       }
     });
